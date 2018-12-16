@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Net;
+﻿using System.Collections.Generic;
 
 namespace AdventOfCode2018.Puzzles.Day2
 {
@@ -12,7 +9,7 @@ namespace AdventOfCode2018.Puzzles.Day2
 
         public Box(string id)
         {
-            this.Id = id;
+            Id = id;
         }
 
         public void InitializeDictionary()

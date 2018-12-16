@@ -6,7 +6,7 @@ namespace AdventOfCode2018.Puzzles
     {
         protected string[] lines;
         
-        public void Initialize()
+        public virtual void Initialize()
         {
             lines = File.ReadAllLines(GetPuzzlesDataPath());
         }

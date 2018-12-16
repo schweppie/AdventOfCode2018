@@ -1,22 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Net;
 
 namespace AdventOfCode2018.Puzzles.Day2
 {
     public class Box
     {
-        private string id;
+        public string Id;
         private Dictionary<char, int> dictionary = new Dictionary<char,int>();
 
         public Box(string id)
         {
-            this.id = id;
+            this.Id = id;
         }
 
         public void InitializeDictionary()
         {
-            for (int i = 0; i < id.Length; i++)
+            for (int i = 0; i < Id.Length; i++)
             {
-                char letter = id[i];
+                char letter = Id[i];
 
                 if (dictionary.ContainsKey(letter))
                     dictionary[letter] += 1;
@@ -25,26 +28,44 @@ namespace AdventOfCode2018.Puzzles.Day2
             }
         }
 
-        public bool HasDoubleLetters()
+        private bool HasNumberOfLetters(int amount)
         {
             foreach (var pair in dictionary)
             {
-                if (pair.Value == 2)
+                if (pair.Value == amount)
                     return true;
             }
 
             return false;
         }
+        
+        public bool HasDoubleLetters()
+        {
+            return HasNumberOfLetters(2);
+        }
 
         public bool HasTripleLetters()
         {
-            foreach (var pair in dictionary)
+            return HasNumberOfLetters(3);
+        }
+
+        public bool FindSingleDifference(Box other, out int index)
+        {
+            int differences = 0;
+            index = -1;
+            
+            for (int i = 0; i < Id.Length; i++)
             {
-                if (pair.Value == 3)
-                    return true;
+                if(other.Id.Contains(Id[i].ToString()))
+                    continue;
+
+                if (differences == 0)
+                    index = i;
+                
+                differences += 1;
             }
 
-            return false;
+            return (differences == 1);
         }
     }
 }

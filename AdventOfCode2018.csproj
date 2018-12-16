@@ -47,7 +47,9 @@
     <Compile Include="Puzzles\Day1\Day1Part2Puzzle.cs" />
     <Compile Include="Puzzles\Day1\Day1Puzzle.cs" />
     <Compile Include="Puzzles\Day2\Box.cs" />
+    <Compile Include="Puzzles\Day2\BoxDifference.cs" />
     <Compile Include="Puzzles\Day2\Day2Part1Puzzle.cs" />
+    <Compile Include="Puzzles\Day2\Day2Part2Puzzle.cs" />
     <Compile Include="Puzzles\Day2\Day2Puzzle.cs" />
     <Compile Include="Puzzles\PuzzleBase.cs" />
   </ItemGroup>

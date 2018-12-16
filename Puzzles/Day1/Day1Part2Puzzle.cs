@@ -30,8 +30,8 @@ namespace AdventOfCode2018.Puzzles.Day1
                         foundSolution = true;
                         break;
                     }
-                    else
-                        frequencies.Add(currentFrequency);
+                    
+                    frequencies.Add(currentFrequency);
                 }
             }
 

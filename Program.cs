@@ -9,7 +9,7 @@ namespace AdventOfCode2018
     {
         public static void Main(string[] args)
         {
-            var puzzle = new Day3Part1Puzzle();
+            var puzzle = new Day3Part2Puzzle();
             
             puzzle.Initialize();
             Console.WriteLine("Solution is: " + puzzle.GetSolution());

@@ -41,16 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\IntVector2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Puzzles\Day1\Day1Part1Puzzle.cs" />
     <Compile Include="Puzzles\Day1\Day1Part2Puzzle.cs" />
     <Compile Include="Puzzles\Day1\Day1Puzzle.cs" />
     <Compile Include="Puzzles\Day2\Box.cs" />
-    <Compile Include="Puzzles\Day2\BoxDifference.cs" />
     <Compile Include="Puzzles\Day2\Day2Part1Puzzle.cs" />
     <Compile Include="Puzzles\Day2\Day2Part2Puzzle.cs" />
     <Compile Include="Puzzles\Day2\Day2Puzzle.cs" />
+    <Compile Include="Puzzles\Day3\Day3Part1Puzzle.cs" />
+    <Compile Include="Puzzles\Day3\Day3Part2Puzzle.cs" />
+    <Compile Include="Puzzles\Day3\Day3Puzzle.cs" />
+    <Compile Include="Puzzles\Day3\ElvePlan.cs" />
+    <Compile Include="Puzzles\Day3\ElveGrid.cs" />
     <Compile Include="Puzzles\PuzzleBase.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,8 @@ namespace AdventOfCode2018.Puzzles
     public abstract class PuzzleBase
     {
         protected string[] lines;
+
+        protected const string NO_SOLUTION = "No solution :(!";
         
         public virtual void Initialize()
         {

@@ -24,7 +24,7 @@
                 }
             }
 
-            return "no solution";
+            return NO_SOLUTION;
         }
     }
 }

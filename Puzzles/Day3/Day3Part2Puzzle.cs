@@ -19,6 +19,9 @@ namespace AdventOfCode2018.Puzzles.Day3
             }
 
             var uniquePlan = elvePlans.Single(x => x.SharingSpace == false);
+
+            if (uniquePlan == null)
+                return NO_SOLUTION;
             
             return uniquePlan.Id.ToString();
         }

@@ -7,7 +7,7 @@
         
         protected override string GetPuzzleData()
         {
-            return "/TestData.txt";
+            return "/Day4Data.txt";
         }        
     }
 }

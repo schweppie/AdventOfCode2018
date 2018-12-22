@@ -8,82 +8,29 @@ namespace AdventOfCode2018.Puzzles.Day4
         private List<SleepPeriod> sleepPeriods;
 
         public readonly int Id;
-        private State state;
 
-        private DateTime lastDateTime;
         private int lastSleepMinute;
-        
-        private enum State
-        {
-            Awake,
-            Sleep,
-        }
-        
+       
         public Guard(int id)
         {
             Id = id;
             sleepPeriods = new List<SleepPeriod>();
         }
 
-        public void StartShift()
+        public void WakeUp(int minute)
         {
-            state = State.Awake;
-            
-            Day4Part1Puzzle.LogMessage += " Guard " + Id + " starts shift";
+            SleepPeriod period = new SleepPeriod(lastSleepMinute, minute);
+            AddSleepPeriod(period);
+
+            Day4Part1Puzzle.LogMessage += " Guard " + Id + " was sleeping, adding sleep period: " + period.Duration() + " minutes";
         }
         
-        public void WakeUp(DateTime dateTime, int minute)
+        public void Sleep(int minute)
         {
-            if (state == State.Awake)
-            {
-                SleepPeriod period = new SleepPeriod(Day4Puzzle.START_MINUTE, minute);
-                AddSleepPeriod(period);
-                
-                Day4Part1Puzzle.LogMessage += " Guard " + Id + " was sleeping from the start, adding sleep period: " + period.Duration() + " minutes";
-            }
-            else
-            {
-                SleepPeriod period = new SleepPeriod(lastSleepMinute, minute);
-                AddSleepPeriod(period);
-
-                Day4Part1Puzzle.LogMessage += " Guard " + Id + " was sleeping, adding sleep period: " + period.Duration() + " minutes";
-            }
-
-            lastDateTime = dateTime;            
-            state = State.Awake;
-        }
-        
-        public void Sleep(DateTime dateTime, int minute)
-        {
-            if (dateTime != lastDateTime && state == State.Sleep)
-            {
-                SleepPeriod period = new SleepPeriod(lastSleepMinute, Day4Puzzle.END_MINUTE);
-                
-                Day4Part1Puzzle.LogMessage += " Guard " + Id + " only slept last date! adding " + period.Duration() + " minutes";
-                AddSleepPeriod(period);
-            }
-            
             Day4Part1Puzzle.LogMessage += " Guard " + Id + " sleeps now";
-            
             lastSleepMinute = minute;
-            lastDateTime = dateTime;
-            state = State.Sleep;
         }
 
-        public void StopShift()
-        {
-            Day4Part1Puzzle.LogMessage += " Guard " + Id + " stops shift";
-
-            if (state == State.Sleep)
-            {
-                SleepPeriod period = new SleepPeriod(lastSleepMinute, Day4Puzzle.END_MINUTE);
-                AddSleepPeriod(period);
-
-                Day4Part1Puzzle.LogMessage += " Guard " + Id + " was still asleep, adding sleep period: " + period.Duration() +
-                                  " minutes";
-            }
-        }
-        
         private void AddSleepPeriod(SleepPeriod period)
         {
             sleepPeriods.Add(period);

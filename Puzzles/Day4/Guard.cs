@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode2018.Puzzles.Day4
 {
-    public class Guard : IComparable
+    public class Guard
     {
         private List<SleepPeriod> sleepPeriods;
 
@@ -22,12 +22,12 @@ namespace AdventOfCode2018.Puzzles.Day4
             SleepPeriod period = new SleepPeriod(lastSleepMinute, minute);
             AddSleepPeriod(period);
 
-            Day4Part1Puzzle.LogMessage += " Guard " + Id + " was sleeping, adding sleep period: " + period.Duration() + " minutes";
+            Day4Puzzle.Log += " Guard " + Id + " was sleeping, adding sleep period: " + period.Duration() + " minutes";
         }
         
         public void Sleep(int minute)
         {
-            Day4Part1Puzzle.LogMessage += " Guard " + Id + " sleeps now";
+            Day4Puzzle.Log += " Guard " + Id + " sleeps now";
             lastSleepMinute = minute;
         }
 
@@ -48,11 +48,11 @@ namespace AdventOfCode2018.Puzzles.Day4
             return sleepDuration;
         }
 
-        public int GetMinuteSleptMost()
+        public KeyValuePair<int, int> GetMinuteSleptMost()
         {
             Dictionary<int, int> sleepingMinutes = new Dictionary<int, int>();
             
-            for (int i = Day4Puzzle.START_MINUTE; i <= Day4Puzzle.END_MINUTE; i++)
+            for (int i = Day4Puzzle.START_MINUTE; i < Day4Puzzle.END_MINUTE; i++)
             {
                 foreach (SleepPeriod sleepPeriod in sleepPeriods)
                 {
@@ -66,29 +66,12 @@ namespace AdventOfCode2018.Puzzles.Day4
                 }
             }
 
-            KeyValuePair<int, int> minuteSleptMost = new KeyValuePair<int, int>();
-            
-            foreach (var pair in sleepingMinutes)
-            {
-                if (pair.Value <= minuteSleptMost.Value)
-                    continue;
+            var sortedMinutes = sleepingMinutes.OrderByDescending(m => m.Value).ToList();
 
-                minuteSleptMost = pair;
-            }
+            if (sortedMinutes.Count > 0)
+                return sortedMinutes[0];
 
-            return minuteSleptMost.Key;
-        }
-
-        public int CompareTo(object otherGuard)
-        {
-            Guard other = (Guard) otherGuard;
-            if (other == null)
-                return 0;
-
-            if (GetSleepDuration() > other.GetSleepDuration())
-                return -1;
-            else
-                return 1;
+            return new KeyValuePair<int, int>(0,0);
         }
     }
 }

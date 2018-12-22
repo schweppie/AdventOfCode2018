@@ -3,6 +3,7 @@ using AdventOfCode2018.Puzzles.Day1;
 using AdventOfCode2018.Puzzles.Day2;
 using AdventOfCode2018.Puzzles.Day3;
 using AdventOfCode2018.Puzzles.Day4;
+using AdventOfCode2018.Puzzles.Day5;
 
 namespace AdventOfCode2018
 {
@@ -10,7 +11,7 @@ namespace AdventOfCode2018
     {
         public static void Main(string[] args)
         {
-            var puzzle = new Day4Part2Puzzle();
+            var puzzle = new Day5Part1Puzzle();
             
             puzzle.Initialize();
             Console.WriteLine("Solution is: " + puzzle.GetSolution());

@@ -61,6 +61,8 @@
     <Compile Include="Puzzles\Day4\Day4Puzzle.cs" />
     <Compile Include="Puzzles\Day4\Guard.cs" />
     <Compile Include="Puzzles\Day4\SleepPeriod.cs" />
+    <Compile Include="Puzzles\Day5\Day5Part1Puzzle.cs" />
+    <Compile Include="Puzzles\Day5\Day5Puzzle.cs" />
     <Compile Include="Puzzles\PuzzleBase.cs" />
   </ItemGroup>
   <ItemGroup>

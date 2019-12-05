@@ -65,7 +65,7 @@ namespace AdventOfCode2018.Puzzles.Day3
             {
                 for (int y = 0; y < Height; y++)
                 {
-                    if (data[x, y].Count > 1)
+                    if (data[x, y] != null && data[x, y].Count > 1)
                         overlapArea += 1;
                 }
             }

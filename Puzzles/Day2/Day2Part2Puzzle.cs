@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode2018.Puzzles.Day2
+﻿using System.Text;
+
+namespace AdventOfCode2018.Puzzles.Day2
 {
     public class Day2Part2Puzzle : Day2Puzzle
     {
@@ -16,8 +18,8 @@
                     if(!box.FindSingleDifference(otherbox, out index))
                         continue;
                     
-                    string one = string.Copy(box.Id).Remove(index, 1);
-                    string another = string.Copy(otherbox.Id).Remove(index, 1);
+                    string one = new string(box.Id).Remove(index, 1);
+                    string another = new string(otherbox.Id).Remove(index, 1);
 
                     if (one == another)
                         return one;

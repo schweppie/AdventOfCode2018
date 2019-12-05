@@ -28,8 +28,8 @@ namespace AdventOfCode2018.Puzzles.Day5
             {
                 Console.WriteLine("Handling " + character);
                 
-                string result = string.Copy(lines[0]);
-                
+                string result = new string(lines[0]);
+
                 result = result.Replace(character, "");
                 result = result.Replace(character.ToUpper(), "");
                 result = ParsePolymer(result);
